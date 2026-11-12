@@ -1,306 +1,352 @@
-# 📊 Sales & Revenue Analytics Dashboard
+# 📊 Sales & Revenue Analysis Dashboard
 
-An interactive business intelligence dashboard built using **Python, Pandas, Plotly, and Streamlit** to analyze sales performance, monitor revenue, and generate meaningful business insights.
+An interactive, multi-source **Sales & Revenue Analysis Dashboard** built with
+**Python, Pandas, Plotly, and Streamlit**. The dashboard lets you import data
+from CSV, Excel, or a SQL database, then explore KPIs, revenue trends, and
+top-performing products/regions/categories through interactive charts,
+filters, and slicers.
 
-This project allows users to upload sales data from CSV and Excel files or connect to a SQL database, explore key business metrics, identify top-performing products, and understand revenue trends through interactive visualizations.
-
-Designed as an academic and portfolio project, it demonstrates practical skills in data analytics, data visualization, business intelligence, and Python application development.
-
----
-
-## 🎯 Project Objectives
-
-The main objective of this project is to transform raw sales data into meaningful business information.
-
-The dashboard helps users:
-
-- Monitor overall sales and revenue performance.
-- Analyze monthly, quarterly, and yearly revenue trends.
-- Identify profitable products and categories.
-- Compare sales performance across different regions.
-- Understand customer purchasing patterns.
-- Discover business opportunities through automated insights.
-
-## ✨ Key Features
-
-### 1. Multiple Data Sources
-- Upload CSV files.
-- Import Excel files (.xlsx).
-- Load data from SQLite databases.
-- Extendable database support using SQLAlchemy.
-
-### 2. Business KPI Overview
-
-The dashboard displays important business performance indicators:
-
-| KPI | Description |
-|---|---|
-| Total Revenue | Overall revenue generated |
-| Total Sales | Total units sold |
-| Total Orders | Number of unique orders |
-| Average Order Value | Average revenue per order |
-| Total Profit | Total profit generated |
-| Profit Margin | Percentage of revenue converted into profit |
-| Revenue Growth | Change in revenue over time |
-
-### 3. Interactive Data Visualizations
-
-- Monthly and yearly revenue trends.
-- Sales performance over time.
-- Top 10 performing products.
-- Category-wise revenue distribution.
-- Region-wise sales comparison.
-- Profitability analysis.
-- Customer segment analysis.
-- Product revenue contribution.
-
-### 4. Interactive Filters
-
-Users can explore data using:
-
-- Date range selection.
-- Product category filters.
-- Region filters.
-- Customer segment filters.
-- Order status filters.
-- Product name search.
-
-All charts and KPIs update according to the selected filters.
-
-### 5. Business Insights
-
-An automated insights section provides useful observations, including:
-
-- Highest revenue-generating products.
-- Best-performing sales regions.
-- Monthly revenue growth or decline.
-- Most profitable product categories.
-- Overall business performance.
-
-### 6. Data Export
-
-- Download filtered sales data in CSV format.
-- Analyze exported data using Excel or other analytics tools.
-
-### 7. Data Validation
-
-- Checks required columns.
-- Handles missing values.
-- Converts numeric and date columns.
-- Displays understandable error messages.
-- Handles empty datasets and filter results.
+Built as an academic / portfolio data analytics project to demonstrate
+**data visualization, KPI tracking, business insight generation, and
+dashboard development skills**.
 
 ---
 
-## 🛠 Technology Stack
+## 🧭 Table of Contents
 
-| Technology | Purpose |
-|---|---|
-| Python | Core programming language |
-| Pandas | Data processing and analysis |
-| NumPy | Numerical operations |
-| Plotly | Interactive charts |
-| Streamlit | Dashboard development |
-| SQLite | Database management |
-| SQLAlchemy | Database connectivity |
-| OpenPyXL | Excel file processing |
+- [Overview](#-overview)
+- [Features](#-features)
+- [Demo / Screenshots](#-demo--screenshots)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Running the App](#-running-the-app)
+- [Using Your Own Data](#-using-your-own-data)
+- [Dataset](#-dataset)
+- [How the Code is Organized](#-how-the-code-is-organized)
+- [Business Insights Engine](#-business-insights-engine)
+- [Future Improvements](#-future-improvements)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 🔎 Overview
+
+This project simulates a real-world business intelligence tool that a sales
+or analytics team might use to monitor performance. It covers the full
+analytics workflow:
+
+1. **Ingest** sales data from Excel, CSV, or a SQL database.
+2. **Clean & validate** the data with error handling for bad files/columns.
+3. **Compute KPIs** — revenue, profit, order volume, growth, margins, etc.
+4. **Visualize** trends and comparisons with interactive Plotly charts.
+5. **Filter/slice** the data by date, category, region, and segment.
+6. **Generate insights** — plain-English, data-driven takeaways.
+
+The app ships with a **realistic synthetic dataset** (3 years, 6,000+
+orders, 5 categories, 5 regions, 4 customer segments, seasonality built in)
+so it runs out of the box with zero setup.
+
+---
+
+## ✨ Features
+
+### Data Sources
+- ✅ Excel (`.xlsx`) import
+- ✅ CSV (`.csv`) import
+- ✅ SQLite database import (bundled `.db` file)
+- ✅ Extensible to MySQL / PostgreSQL via SQLAlchemy connection strings
+
+### KPIs
+- Total Sales (units)
+- Total Revenue
+- Total Orders
+- Average Order Value
+- Total Profit
+- Profit Margin
+- Monthly Revenue Growth
+- Top Performing Products
+- Top Performing Categories
+- Best Performing Regions
+
+### Visualizations
+- Revenue trend line chart
+- Monthly sales volume trend
+- Top products bar chart
+- Category-wise sales (donut chart)
+- Region-wise revenue bar chart
+- Profit distribution (box plot)
+- Sales by customer segment
+- Revenue contribution treemap (category → product)
+- Profit margin gauge
+
+### Interactivity
+- Date range picker
+- Product category multi-select filter
+- Region multi-select filter
+- Customer segment multi-select filter
+- Order status filter (Completed / Returned / Cancelled)
+- Product name search box
+- Downloadable filtered dataset (CSV)
+- Tabbed layout (Trends / Products / Regions / Profitability / Raw Data)
+
+### Robustness
+- Friendly error messages for invalid/missing files
+- Schema validation (required columns, numeric coercion)
+- Graceful handling of empty filter results
+
+---
+
+## 🖼 Demo / Screenshots
+
+### KPI Overview & Business Insights
+![KPI Overview](assets/screenshots/kpi-overview.png)
+
+### Revenue & Sales Trends
+![Revenue Trends](assets/screenshots/revenue-trends.png)
+
+### Top Products & Category Breakdown
+![Top Products](assets/screenshots/top-products.png)
+
+### Regional & Customer Segment Analysis
+![Regional Analysis](assets/screenshots/regional-analysis.png)
+
+### Profitability Analysis
+![Profitability](assets/screenshots/profitability.png)
+
+---
+
+## 🛠 Tech Stack
+
+| Layer            | Technology                     |
+|-------------------|---------------------------------|
+| Language          | Python 3.10+                   |
+| Data processing   | Pandas, NumPy                  |
+| Visualization     | Plotly Express / Graph Objects |
+| Dashboard/UI      | Streamlit                      |
+| Database          | SQLite (bundled), SQLAlchemy for MySQL/PostgreSQL |
+| File formats      | CSV, XLSX (openpyxl)           |
 
 ---
 
 ## 📁 Project Structure
 
-```text
+```
 sales-revenue-dashboard/
-│
-├── app.py
-│
+├── app.py                      # Main Streamlit application (UI + orchestration)
 ├── src/
 │   ├── __init__.py
-│   ├── data_loader.py
-│   ├── kpi_calculator.py
-│   ├── visualizations.py
-│   └── database.py
-│
+│   ├── data_loader.py          # CSV / Excel / SQL loading + validation
+│   ├── kpi_calculator.py       # All KPI math (pure functions, unit-testable)
+│   ├── visualizations.py       # Plotly chart-building functions
+│   └── database.py             # SQLite helpers + connection-string builders
 ├── utils/
-│   └── data_generator.py
-│
+│   └── data_generator.py       # Generates the synthetic sample dataset
 ├── data/
-│   ├── sample_sales_data.csv
-│   ├── sample_sales_data.xlsx
-│   └── sales_database.db
-│
-├── assets/
-│   └── screenshots/
-│
+│   ├── sample_sales_data.csv   # Sample dataset (CSV)
+│   ├── sample_sales_data.xlsx  # Sample dataset (Excel)
+│   └── sales_database.db       # Sample dataset (SQLite)
 ├── .streamlit/
-│   └── config.toml
-│
+│   └── config.toml             # Theme configuration
+├── assets/
+│   └── screenshots/            # Screenshot placeholders for README
 ├── requirements.txt
 ├── .gitignore
 ├── LICENSE
 └── README.md
 ```
 
+This structure follows a standard **separation-of-concerns** layout: UI code
+(`app.py`) never contains business logic directly — it calls into `src/`
+modules, which makes the project easier to read, test, and extend.
+
 ---
 
-## ⚙️ Installation and Setup
+## ⚙️ Installation
 
 ### Prerequisites
-
-Make sure the following are installed:
-
 - Python 3.10 or higher
-- Git
-- Visual Studio Code (recommended)
-- pip package manager
+- pip
 
-### Step 1: Clone the Repository
+### Steps
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/sales-revenue-dashboard.git
-```
-
-### Step 2: Open Project Directory
-
-```bash
+# 1. Clone the repository
+git clone https://github.com/<your-username>/sales-revenue-dashboard.git
 cd sales-revenue-dashboard
-```
 
-### Step 3: Create Virtual Environment
-
-```bash
+# 2. Create a virtual environment (recommended)
 python -m venv venv
-```
 
-Activate it on Windows:
-
-```bash
+# Activate it:
+# Windows:
 venv\Scripts\activate
-```
+# macOS/Linux:
+source venv/bin/activate
 
-### Step 4: Install Dependencies
-
-```bash
+# 3. Install dependencies
 pip install -r requirements.txt
 ```
 
-### Step 5: Run the Dashboard
+---
+
+## ▶️ Running the App
 
 ```bash
 streamlit run app.py
 ```
 
-Open the following address in your browser:
+Then open the URL Streamlit prints in your terminal (typically
+`http://localhost:8501`) in your browser.
 
-```text
-http://localhost:8501
+The dashboard loads the **bundled sample dataset by default** — no extra
+setup required. Use the sidebar to switch to your own CSV, Excel, or
+SQLite file at any time.
+
+### Regenerating the sample dataset
+
+If you want a fresh random sample (or want to change the size / date
+range), edit the constants at the top of `utils/data_generator.py` and run:
+
+```bash
+python utils/data_generator.py
 ```
 
-The dashboard will start locally and display the available sales analytics.
+This regenerates `data/sample_sales_data.csv` and `data/sales_database.db`.
 
 ---
 
-## 📂 Dataset Information
+## 📤 Using Your Own Data
 
-The project includes a synthetic sales dataset for demonstration and testing.
+The dashboard expects the following columns (matching the sample dataset
+schema). If your file uses different column names, rename them to match
+before uploading:
 
-The sample dataset can contain:
+| Column | Type | Description |
+|---|---|---|
+| `OrderID` | text | Unique order identifier |
+| `OrderDate` | date | Order date (any standard date format) |
+| `CustomerSegment` | text | e.g. Consumer, Small Business, Enterprise |
+| `Region` | text | Sales region |
+| `ProductCategory` | text | Product category |
+| `ProductName` | text | Product name |
+| `Quantity` | number | Units sold |
+| `UnitPrice` | number | Price per unit |
+| `NetRevenue` | number | Revenue after discounts |
+| `Profit` | number | Profit for the line item |
+| `OrderStatus` | text | Completed / Returned / Cancelled |
 
-- Multiple years of sales records.
-- Different product categories.
-- Multiple sales regions.
-- Various customer segments.
-- Different order statuses.
-- Product pricing and profit information.
+Optional columns (`DiscountPercent`, `GrossRevenue`, `DiscountAmount`,
+`UnitCost`, `TotalCost`, `SalesRep`, `PaymentMethod`) are used if present
+but default gracefully if missing.
 
-### Expected Dataset Columns
-
-| Column | Description |
-|---|---|
-| OrderID | Unique order identifier |
-| OrderDate | Date of purchase |
-| CustomerSegment | Customer category |
-| Region | Sales region |
-| ProductCategory | Product category |
-| ProductName | Product name |
-| Quantity | Number of units sold |
-| UnitPrice | Price per unit |
-| NetRevenue | Revenue after discounts |
-| Profit | Profit generated |
-| OrderStatus | Current order status |
-
-Users can upload their own datasets after matching the required column structure.
-
----
-
-## 📈 Business Intelligence & Insights
-
-This dashboard is designed to help users move beyond basic data visualization and understand actual business performance.
-
-Example business questions it can answer:
-
-1. Which product generates the highest revenue?
-2. Which region contributes the most to overall sales?
-3. How does revenue change month by month?
-4. Which category provides the highest profit margin?
-5. Are sales increasing or decreasing?
-6. Which customer segment generates the most revenue?
-
-These insights can help businesses improve pricing strategies, inventory planning, product selection, and sales performance.
+**Connecting to MySQL / PostgreSQL:** use
+`src/data_loader.load_sql_connection(connection_string, query)` with a
+SQLAlchemy connection string (see docstrings in `src/database.py` for
+examples). This isn't wired into the file-upload sidebar by default (to
+avoid asking users to paste live DB credentials into a public demo app),
+but it's ready to call from a script or a custom form.
 
 ---
 
-## 🚀 Future Enhancements
+## 🗂 Dataset
 
-The following features can be added in future versions:
+The bundled sample dataset (`data/sample_sales_data.csv`) is **fully
+synthetic** and generated by `utils/data_generator.py`. It simulates:
 
-- AI-powered sales forecasting.
-- Machine learning-based revenue prediction.
-- Customer segmentation using clustering.
-- Customer Lifetime Value (CLV) analysis.
-- Advanced geographical sales maps.
-- PDF and Excel report generation.
-- User authentication and role-based access.
-- MySQL and PostgreSQL integration.
-- Sales anomaly detection.
-- Docker-based deployment.
-- Automated testing using PyTest.
+- **3 years** of order history (2022–2024)
+- **6,000** orders across **5 product categories** and **26 products**
+- **5 regions**, **4 customer segments**, **10 sales reps**
+- Realistic **seasonality** (holiday-season spikes in Nov/Dec)
+- Randomized discounts, order statuses (Completed/Returned/Cancelled),
+  and payment methods
 
----
-
-## 🎓 Learning Outcomes
-
-Through this project, the following technical concepts are demonstrated:
-
-- Data cleaning and preprocessing.
-- Exploratory Data Analysis (EDA).
-- KPI calculation and performance tracking.
-- Interactive data visualization.
-- Database connectivity.
-- Python application development.
-- Business intelligence and analytical thinking.
-- Generating actionable business insights.
+This makes every dashboard feature (trend charts, top-N rankings, regional
+breakdowns, filters) show meaningful, non-trivial patterns.
 
 ---
 
-## 👨‍💻 Author
+## 🧩 How the Code is Organized
 
-**Arpit Patidar**
-
-B.Tech – Internet of Things (IoT)
-
-Interested in Python Development, Data Analytics, Artificial Intelligence, and Software Development.
+- **`app.py`** — Streamlit page layout, sidebar filters, and wiring between
+  user input and the modules below. Contains no KPI math or chart logic
+  directly.
+- **`src/data_loader.py`** — Reads CSV/Excel/SQLite, validates schema,
+  coerces types, and raises a friendly `DataLoadError` on bad input.
+- **`src/kpi_calculator.py`** — Pure, side-effect-free functions that take
+  a DataFrame and return a KPI value or summary table. Easy to unit test
+  independently of the UI.
+- **`src/visualizations.py`** — Builds and returns Plotly `Figure` objects;
+  no Streamlit imports, so charts can be reused in a notebook or another
+  app.
+- **`src/database.py`** — SQLite query helper + connection-string builders
+  for MySQL/PostgreSQL.
+- **`utils/data_generator.py`** — Synthetic data generation script (also
+  a good reference for the expected schema).
 
 ---
 
-## 📜 License
+## 💡 Business Insights Engine
 
-This project is intended for educational and portfolio purposes.
+`kpi_calculator.generate_business_insights()` analyzes the currently
+filtered dataset and produces plain-English takeaways, for example:
 
-Released under the MIT License.
+> **Conference Table** is the top-performing product, generating
+> $210,074.77 in revenue from 320 units sold.
+>
+> Revenue declined **18.9%** month-over-month in the most recent period.
+>
+> Profit margin is healthy at **55.3%**, indicating efficient pricing and
+> cost control.
+
+These are shown in an expandable "Business Insights" panel at the top of
+the dashboard and update live as filters change — demonstrating basic
+automated business-insight generation.
 
 ---
 
-⭐ If you find this project useful, consider giving it a star on GitHub!
+## 🚀 Future Improvements
 
-**Built with Python, Data Analytics & Business Intelligence.**
+- [ ] Add forecasting (e.g. Prophet / ARIMA) for revenue projection
+- [ ] Add cohort / customer lifetime value analysis
+- [ ] Add a geographic map visualization (choropleth) for region revenue
+- [ ] Add user authentication for multi-user / role-based dashboards
+- [ ] Add automated PDF/PowerPoint report export
+- [ ] Add unit tests (pytest) for `kpi_calculator.py` and `data_loader.py`
+- [ ] Add CI (GitHub Actions) to run tests and linting on push
+- [ ] Add native MySQL/PostgreSQL connection form in the sidebar
+- [ ] Add anomaly detection for sudden revenue/profit drops
+- [ ] Containerize with Docker for one-command deployment
+
+---
+
+## 🤝 Contributing
+
+This is primarily an academic/portfolio project, but suggestions and pull
+requests are welcome. To contribute:
+
+```bash
+git checkout -b feature/your-feature-name
+# make your changes
+git commit -m "Add: your feature description"
+git push origin feature/your-feature-name
+```
+
+Then open a pull request.
+
+---
+
+## 📄 License
+
+This project is released under the MIT License — see [LICENSE](LICENSE)
+for details.
+
+---
+
+## 🙋 Author's Note
+
+This project was built as a hands-on exercise in data visualization, KPI
+tracking, and business insight generation using Python's data analytics
+and dashboarding ecosystem (Pandas, Plotly, Streamlit). Feel free to fork
+it, plug in your own dataset, and extend it further.
